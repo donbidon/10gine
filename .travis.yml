@@ -1,0 +1,9 @@
+language: php
+
+sudo: false
+
+php:
+  - 7.2
+
+notifications:
+  email: false
