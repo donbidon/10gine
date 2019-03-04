@@ -1,0 +1,6 @@
+## page { ##
+Some warning...
+Some error!!!
+
+And here has to be some page body...
+## } page ##

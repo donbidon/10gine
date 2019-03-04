@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="message_warning">Some warning...</div>
+<div class="message_error">Some error!!!</div>
+<div>
+And here has to be some page body...
+</div>
+</body>
+</html>
