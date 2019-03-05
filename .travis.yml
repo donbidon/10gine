@@ -9,8 +9,8 @@ sudo: false
 #   - 7.4snapshot
 
 script:
-#   - ./phpunit --coverage-clover=coverage.xml
-  - phpunit --coverage-text=coverage.txt
+  phpunit --coverage-clover=coverage.xml
+#  - phpunit --coverage-text=coverage.txt
 
 
 notifications:

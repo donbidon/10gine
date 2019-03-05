@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    bootstrap="vendor/autoload.php"
+    cacheResult="true"
+    colors="true"
+    verbose="true"
+>
+    <testsuites>
+        <testsuite name="Template ENgine">
+            <directory suffix="_Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
