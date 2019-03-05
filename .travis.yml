@@ -2,8 +2,16 @@ language: php
 
 sudo: false
 
-php:
-  - 7.2
+# php:
+#   - 5.6
+#   - 7.2
+#   - 7.3
+#   - 7.4snapshot
+
+script:
+#   - ./phpunit --coverage-clover=coverage.xml
+  - phpunit --coverage-text
+
 
 notifications:
   email: false
