@@ -7,7 +7,7 @@ Fetal template engine supporting localization.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/donbidon/10gine.svg?style=flat-square)](https://packagist.org/packages/donbidon/10gine)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.4-8892BF.svg?style=flat-square)](https://php.net/)
-[![Build Status](https://img.shields.io/travis/donbidon/10gine/master.svg?style=flat-square)]
+![Build Status](https://img.shields.io/travis/donbidon/10gine/master.svg?style=flat-square)
 
 
 ## Installation
