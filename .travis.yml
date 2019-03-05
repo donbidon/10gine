@@ -10,7 +10,7 @@ sudo: false
 
 script:
 #   - ./phpunit --coverage-clover=coverage.xml
-  - phpunit --coverage-text
+  - phpunit --coverage-text=coverage.txt
 
 
 notifications:
