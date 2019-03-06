@@ -15,6 +15,7 @@
     "support": {
         "issues": "https://github.com/donbidon/10gine/issues"
     },
+    "prefer-stable": true,
     "require": {
         "php": "^7.2"
     },
