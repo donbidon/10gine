@@ -18,7 +18,7 @@ install:
   travis_retry composer update
 
 script:
-  phpunit --coverage-clover=coverage.xml
+  phpunit -c phpunit.xml --coverage-clover=coverage.xml
 #  - phpunit --coverage-text=coverage.txt
 
 

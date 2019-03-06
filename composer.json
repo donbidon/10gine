@@ -8,14 +8,17 @@
     "authors": [
         {
             "name":     "donbidon",
-            "homepage": "http://donbidon.rf.gd/"
+            "homepage": "http://donbidon.rf.gd/",
+            "role":     "lead"
         }
     ],
+    "support": {
+        "issues": "https://github.com/donbidon/10gine/issues"
+    },
     "require": {
-        "php": ">=5.4.0"
+        "php": "^7.2"
     },
     "require-dev": {
-        "php":             "^7.2",
         "phpunit/phpunit": "^8"
     },
     "autoload": {
