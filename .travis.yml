@@ -9,9 +9,9 @@ php:
 #   - 7.3
 #   - 7.4snapshot
 
-env:
-  global:
-    - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
+# env:
+#   global:
+#     - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
 
 install:
 #   travis_retry ./build/tools/composer update $DEFAULT_COMPOSER_FLAGS
@@ -19,7 +19,6 @@ install:
 
 script:
   phpunit -c phpunit.xml --coverage-clover=coverage.xml
-#  - phpunit --coverage-text=coverage.txt
 
 
 notifications:
