@@ -157,7 +157,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            "Unsupported mode \"unknown\" (supported: cli, www, xml)"
+            "Unsupported mode \"unknown\" (supported: cli, www)"
         );
         new TENgine("tests/data/i18n", "tests/data/templates", "", "unknown");
     }
@@ -177,7 +177,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
         $expected = ["en", "invalid"];
         self::assertEquals($expected, $te->getLocales());
 
-        $expected = ["cli", "www", "xml"];
+        $expected = ["cli", "www"];
         self::assertEquals($expected, $te->getModes());
     }
 
