@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Template ENgine.
@@ -71,7 +71,7 @@ class TENgine
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    public function __construct($localesPath, $templatesPath, $locale = "", $mode = "")
+    public function __construct(string $localesPath, string $templatesPath, string $locale = "", string $mode = "")
     {
         if (!file_exists(sprintf("%s/.tag", $localesPath))) {
             throw new InvalidArgumentException(sprintf(
@@ -145,7 +145,7 @@ class TENgine
      *
      * @return array
      */
-    public function getLocales()
+    public function getLocales(): array
     {
         return $this->locales;
     }
@@ -155,7 +155,7 @@ class TENgine
      *
      * @return array
      */
-    public function getModes()
+    public function getModes(): array
     {
         return $this->modes;
     }
@@ -170,7 +170,7 @@ class TENgine
      *
      * @throws InvalidArgumentException
      */
-    public function localize($id, $args = [])
+    public function localize(string $id, array $args = []): string
     {
         if (!isset($this->localeData[$id])) {
             throw new InvalidArgumentException(sprintf(
@@ -193,7 +193,7 @@ class TENgine
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    public function render($template, $scope = [])
+    public function render(string $template, array $scope = []): string
     {
         $path = sprintf("%s/%s/%s.phtml", $this->path, $this->mode, $template);
         if (!is_file($path)) {

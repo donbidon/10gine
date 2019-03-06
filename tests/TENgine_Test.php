@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * TENgine class unit tests.
  *
@@ -31,7 +31,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -43,7 +43,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public static function tearDownAfterClass() : void
+    public static function tearDownAfterClass(): void
     {
         error_reporting(static::$errorLevel);
 
@@ -77,9 +77,9 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage(
-            "Empty locales folder \"./data/i18n.empty\""
+            "Empty locales folder \"tests/data/i18n.empty\""
         );
-        new TENgine("./data/i18n.empty", "");
+        new TENgine("tests/data/i18n.empty", "");
     }
 
     /**
@@ -95,7 +95,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             "Unsupported locale \"unknown\" (supported: en, invalid)"
         );
-        new TENgine("./data/i18n", "", "unknown");
+        new TENgine("tests/data/i18n", "", "unknown");
     }
 
     /**
@@ -109,9 +109,9 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage(
-            "Invalid locales file \"./data/i18n/invalid.php\""
+            "Invalid locales file \"tests/data/i18n/invalid.php\""
         );
-        new TENgine("./data/i18n", "", "invalid");
+        new TENgine("tests/data/i18n", "", "invalid");
     }
 
     /**
@@ -127,7 +127,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             "Invalid templates path \"\""
         );
-        new TENgine("./data/i18n", "");
+        new TENgine("tests/data/i18n", "");
     }
 
     /**
@@ -141,9 +141,9 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage(
-            "Empty templates folder \"./data/templates.empty\""
+            "Empty templates folder \"tests/data/templates.empty\""
         );
-        new TENgine("./data/i18n", "./data/templates.empty");
+        new TENgine("tests/data/i18n", "tests/data/templates.empty");
     }
 
     /**
@@ -159,7 +159,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             "Unsupported mode \"unknown\" (supported: cli, www, xml)"
         );
-        new TENgine("./data/i18n", "./data/templates", "", "unknown");
+        new TENgine("tests/data/i18n", "tests/data/templates", "", "unknown");
     }
 
     /**
@@ -172,7 +172,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      */
     public function testLocalesAndModes()
     {
-        $te = new TENgine("./data/i18n", "./data/templates");
+        $te = new TENgine("tests/data/i18n", "tests/data/templates");
 
         $expected = ["en", "invalid"];
         self::assertEquals($expected, $te->getLocales());
@@ -194,7 +194,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             "Unknown string id \"invalid\""
         );
-        $te = new TENgine("./data/i18n", "./data/templates");
+        $te = new TENgine("tests/data/i18n", "tests/data/templates");
         $te->localize("invalid");
     }
 
@@ -207,7 +207,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      */
     public function testLocalize()
     {
-        $te = new TENgine("./data/i18n", "./data/templates");
+        $te = new TENgine("tests/data/i18n", "tests/data/templates");
         $expected = "Some error!!!";
         self::assertEquals($expected, $te->localize("error"));
     }
@@ -225,7 +225,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             "Template \"cli/invalid.phtml\" not found"
         );
-        $te = new TENgine("./data/i18n", "./data/templates", "", "cli");
+        $te = new TENgine("tests/data/i18n", "tests/data/templates", "", "cli");
         $te->render("invalid");
     }
 
@@ -239,7 +239,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
     public function testRendering()
     {
         foreach (["cli", "www"] as $mode) {
-            $te = new TENgine("./data/i18n", "./data/templates", "en", $mode);
+            $te = new TENgine("tests/data/i18n", "tests/data/templates", "en", $mode);
 
             $scope = ["messages" => []];
             foreach (["warning", "error"] as $id) {
@@ -251,7 +251,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
             $scope = ["body" => $te->render("body", $scope)];
 
             $actual = $te->render("page", $scope);
-            $expected = file_get_contents(sprintf("./data/expected/%s.txt", $mode));
+            $expected = file_get_contents(sprintf("tests/data/expected/%s.txt", $mode));
             self::assertEquals($expected, $actual);
         }
     }
