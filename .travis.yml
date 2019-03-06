@@ -3,23 +3,16 @@ language: php
 sudo: false
 
 php:
-#   - 5.4
-#   - 5.6
   - 7.2
-#   - 7.3
-#   - 7.4snapshot
-
-# env:
-#   global:
-#     - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
 
 install:
-#   travis_retry ./build/tools/composer update $DEFAULT_COMPOSER_FLAGS
-  travis_retry composer update
+  - travis_retry composer install --no-interaction --no-ansi --no-progress --no-suggest --prefer-source --dev
 
 script:
-  phpunit -c phpunit.xml --coverage-clover=coverage.xml
+  - vendor/bin/phpunit -c phpunit.xml --coverage-clover=coverage.xml
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   email: false

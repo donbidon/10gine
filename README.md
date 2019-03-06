@@ -7,14 +7,14 @@ Fetal template engine supporting localization.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/donbidon/10gine.svg?style=flat-square)](https://packagist.org/packages/donbidon/10gine)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%5E7.2-8892BF.svg?style=flat-square)](https://php.net/)
-![Build Status](https://travis-ci.com/donbidon/10gine.svg?branch=master)
-
+[![Build Status](https://travis-ci.com/donbidon/10gine.svg?branch=master)](https://travis-ci.com/donbidon/10gine)
+[![Code Coverage](https://codecov.io/gh/sebastianbergmann/phpunit/branch/master/graph/badge.svg)](https://codecov.io/gh/donbidon/10gine)
 
 ## Installation
-Run ` composer require donbidon/10gine ^0.1.0 ` or add following code to your "composer.json" file:
+Run ` composer require donbidon/10gine ~0.1 ` or add following code to your "composer.json" file:
 ```json
     "require": {
-        "donbidon/10gine": "^0.1.0"
+        "donbidon/10gine": "~0.1"
     }
 ```
 and run ` composer update `.
