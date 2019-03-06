@@ -6,7 +6,7 @@ Fetal template engine supporting localization.
 [![Donate to liberapay](http://img.shields.io/liberapay/receives/don.bidon.svg?logo=liberapay)](https://liberapay.com/don.bidon/donate)
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/donbidon/10gine.svg?style=flat-square)](https://packagist.org/packages/donbidon/10gine)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.4-8892BF.svg?style=flat-square)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%5E7.2-8892BF.svg?style=flat-square)](https://php.net/)
 ![Build Status](https://img.shields.io/travis/donbidon/10gine/master.svg?style=flat-square)
 
 
