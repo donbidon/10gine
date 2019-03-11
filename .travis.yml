@@ -6,7 +6,7 @@ php:
   - 7.2
 
 install:
-  - travis_retry composer install --no-interaction --no-ansi --no-progress --no-suggest --prefer-source --dev
+  - travis_retry composer install --no-interaction --no-ansi --no-progress --no-suggest --prefer-source
 
 script:
   - vendor/bin/phpunit -c phpunit.xml --coverage-clover=coverage.xml
