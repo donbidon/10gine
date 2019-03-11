@@ -11,4 +11,5 @@
 return [
     "warning" => "Some warning...",
     "error"   => "Some error!!!",
+    "body"    => "And here has to be some page body...",
 ];

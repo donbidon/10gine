@@ -1,5 +1,4 @@
-<?php declare(strict_types=1);
-
+<?php
 /**
  * Template ENgine.
  *
@@ -7,7 +6,9 @@
  * @license   https://opensource.org/licenses/mit-license.php
  */
 
-namespace donbidon;
+declare(strict_types=1);
+
+namespace donbidon\Lib;
 
 use \InvalidArgumentException;
 use \RuntimeException;
@@ -183,6 +184,23 @@ class TENgine
     }
 
     /**
+     * Returns localized string according to id and arguments.
+     *
+     * Short alias of <a href="#method_localize">self::localize()</a>.
+     *
+     * @param string $id
+     * @param array  $args
+     *
+     * @return string
+     *
+     * @see self::localize()
+     */
+    public function l(string $id, array $args = []): string
+    {
+        return $this->localize($id, $args);
+    }
+
+    /**
      * Renders template according to locales and passed scope.
      *
      * @param string $template
@@ -195,25 +213,41 @@ class TENgine
      */
     public function render(string $template, array $scope = []): string
     {
-        $path = sprintf("%s/%s/%s.phtml", $this->path, $this->mode, $template);
+        $path = sprintf("%s/%s/%s.php", $this->path, $this->mode, $template);
         if (!is_file($path)) {
             throw new InvalidArgumentException(sprintf(
                 "Template \"%s\" not found",
-                sprintf("%s/%s.phtml", $this->mode, $template)
+                sprintf("%s/%s.php", $this->mode, $template)
             ));
         }
         if (!is_readable($path)) {
             throw new RuntimeException(sprintf(
                 "Template \"%s\" not readable",
-                sprintf("%s/%s.phtml", $this->mode, $template)
+                sprintf("%s/%s.php", $this->mode, $template)
             ));
         }
-        $locales = $this->localeData;
         ob_start();
         require $path;
         $rendered = ob_get_contents();
         ob_end_clean();
 
         return $rendered;
+    }
+
+    /**
+     * Renders template according to locales and passed scope.
+     *
+     * Short alias of <a href="#method_render">self::render()</a>.
+     *
+     * @param string $template
+     * @param array  $scope
+     *
+     * @return string
+     *
+     * @see self::render()
+     */
+    public function r(string $template, array $scope = []): string
+    {
+        return $this->render($template, $scope);
     }
 }

@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-             "donbidon\\": "src"
+             "donbidon\\Lib\\": "src"
          }
     }
 }
