@@ -57,7 +57,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::__construct
+     * @cover donbidon\Lib\TENgine::__construct()
      */
     public function testInvalidLocalesPath(): void
     {
@@ -73,7 +73,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::__construct
+     * @cover donbidon\Lib\TENgine::__construct()
      */
     public function testEmptyLocalesFolder(): void
     {
@@ -89,7 +89,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::__construct
+     * @cover donbidon\Lib\TENgine::__construct()
      */
     public function testUnsupportedLocale(): void
     {
@@ -105,7 +105,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::__construct
+     * @cover donbidon\Lib\TENgine::__construct()
      */
     public function testInvalidLocale(): void
     {
@@ -121,7 +121,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::__construct
+     * @cover donbidon\Lib\TENgine::__construct()
      */
     public function testInvalidTemplatesPath(): void
     {
@@ -137,7 +137,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::__construct
+     * @cover donbidon\Lib\TENgine::__construct()
      */
     public function testEmptyTemplatesFolder(): void
     {
@@ -153,7 +153,7 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::__construct
+     * @cover donbidon\Lib\TENgine::__construct()
      */
     public function testUnsupportedMode(): void
     {
@@ -169,18 +169,19 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::getLocales
-     * @covers \donbidon\TENgine::getModes
+     * @cover donbidon\Lib\TENgine::__construct()
+     * @cover donbidon\Lib\TENgine::getLocales()
+     * @cover donbidon\Lib\TENgine::getModes()
      */
     public function testLocalesAndModes(): void
     {
-        $te = new TENgine("tests/data/i18n", "tests/data/templates");
+        $ten = new TENgine("tests/data/i18n", "tests/data/templates");
 
         $expected = ["en", "invalid"];
-        self::assertEquals($expected, $te->getLocales());
+        self::assertEquals($expected, $ten->getLocales());
 
         $expected = ["cli", "www"];
-        self::assertEquals($expected, $te->getModes());
+        self::assertEquals($expected, $ten->getModes());
     }
 
     /**
@@ -188,8 +189,9 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::localize
-     * @covers \donbidon\TENgine::l
+     * @cover donbidon\Lib\TENgine::__construct()
+     * @cover donbidon\Lib\TENgine::localize()
+     * @cover donbidon\Lib\TENgine::l()
      */
     public function testInvalidStringId(): void
     {
@@ -206,14 +208,15 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::localize
-     * @covers \donbidon\TENgine::l
+     * @cover donbidon\Lib\TENgine::__construct()
+     * @cover donbidon\Lib\TENgine::localize()
+     * @cover donbidon\Lib\TENgine::l()
      */
     public function testLocalize(): void
     {
-        $te = new TENgine("tests/data/i18n", "tests/data/templates", "", "cli");
+        $ten = new TENgine("tests/data/i18n", "tests/data/templates", "", "cli");
         $expected = "Some error!!!";
-        self::assertEquals($expected, $te->localize("error"));
+        self::assertEquals($expected, $ten->localize("error"));
     }
 
     /**
@@ -221,8 +224,9 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::render
-     * @covers \donbidon\TENgine::r
+     * @cover donbidon\Lib\TENgine::__construct()
+     * @cover donbidon\Lib\TENgine::render()
+     * @cover donbidon\Lib\TENgine::r()
      */
     public function testInvalidTemplate(): void
     {
@@ -230,8 +234,8 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             "Template \"cli/invalid.php\" not found"
         );
-        $te = new TENgine("tests/data/i18n", "tests/data/templates", "", "cli");
-        $te->r("invalid");
+        $ten = new TENgine("tests/data/i18n", "tests/data/templates", "", "cli");
+        $ten->r("invalid");
     }
 
     /**
@@ -239,26 +243,27 @@ class TENgine_Test extends \PHPUnit\Framework\TestCase
      *
      * @return void
      *
-     * @covers \donbidon\TENgine::localize
-     * @covers \donbidon\TENgine::l
-     * @covers \donbidon\TENgine::render
-     * @covers \donbidon\TENgine::r
+     * @cover donbidon\Lib\TENgine::__construct()
+     * @cover donbidon\Lib\TENgine::localize()
+     * @cover donbidon\Lib\TENgine::l()
+     * @cover donbidon\Lib\TENgine::render()
+     * @cover donbidon\Lib\TENgine::r()
      */
     public function testRendering(): void
     {
         foreach (["cli", "www"] as $mode) {
-            $te = new TENgine("tests/data/i18n", "tests/data/templates", "", $mode);
+            $ten = new TENgine("tests/data/i18n", "tests/data/templates", "", $mode);
 
             $scope = ["messages" => []];
             foreach (["warning", "error"] as $id) {
-                $scope["messages"][] = $te->r(
+                $scope["messages"][] = $ten->r(
                     sprintf("messages/%s", $id),
-                    ["message" => $te->l($id)]
+                    ["message" => $ten->l($id)]
                 );
             }
-            $scope = ["body" => $te->r("body", $scope)];
+            $scope = ["body" => $ten->r("body", $scope)];
 
-            $actual = $te->r("page", $scope);
+            $actual = $ten->r("page", $scope);
             $expected = file_get_contents(sprintf("tests/data/expected/%s.txt", $mode));
             self::assertEquals($expected, $actual);
         }
