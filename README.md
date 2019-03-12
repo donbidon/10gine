@@ -10,12 +10,10 @@ Fetal template engine supporting localization.
 [![Code Coverage](https://codecov.io/gh/donbidon/10gine/branch/master/graph/badge.svg)](https://codecov.io/gh/donbidon/10gine)
 [![GitHub issues](https://img.shields.io/github/issues-raw/donbidon/10gine.svg)](https://github.com/donbidon/10gine/issues)
 
-
 [![Donate to liberapay](http://img.shields.io/liberapay/receives/don.bidon.svg?logo=liberapay)](https://liberapay.com/don.bidon/donate)
 
 ## Installation
 Run `composer require donbidon/10gine`.
 
 ## Donate
-
 [Yandex.Money, Visa, MasterCard, Maestro](https://money.yandex.ru/to/41001351141494) or visit [Liberapay](https://liberapay.com/don.bidon/donate).
